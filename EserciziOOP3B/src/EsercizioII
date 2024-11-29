@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+// CREAZIONE CLASSE NON PUBBLICA
+class Saluto {
+
+    // CREAZIONE METODO saluta
+    public String saluta(String nome, int n) {
+        //PER ACCUMULARE I SALUTI
+        StringBuilder finito = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            // QUESTO NON STAMPA NULLA. IL RISULTATO VIENE ACCUMULATO IN finito
+            finito.append("Hello ").append(nome).append("!\n");
+        }
+    return finito.toString();
+    }
+}
+
+// CREAZIONE UNICA CLASSE PUBBLICA
+public class Main {
+
+    //CREAZIONE METODO main
+    public static void main(String[] args) {
+        //CREAZIONE DI UN'ISTANZA DELLA CLASSE Saluto
+        Saluto prova = new Saluto();
+
+        //TEST
+        Scanner in = new Scanner(System.in);
+        System.out.println("Come ti chiami?");
+        String nome = in.nextLine();
+        System.out.println("Quante volte vuoi essere salutato?");
+        int n = in.nextInt();
+        in.close();
+        String fatto = prova.saluta(nome, n);
+        System.out.println("A te " + fatto);
+    }
+}

@@ -1,0 +1,37 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+public class OrdinaNumeri {
+
+    // Metodo che accetta tre interi e li restituisce in ordine crescente
+
+    /*"int[]" indica che il metodo restituisce un array di interi. Questo è utile quando si vuole che il metodo
+    fornisca un risultato che può essere ulteriormente utilizzato dal chiamante.
+
+    "void" Indica che il metodo non restituisce alcun valore. Viene utilizzato quando si eseguono operazioni che
+    non necessitano di un valore di ritorno, come la stampa su console. */
+    public int[] ordinaETiStampa(int a, int b, int c) {
+        int[] numeri = {a, b, c};
+        Arrays.sort(numeri); // Ordina l'array
+        return numeri; // Restituisce l'array ordinato
+    }
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Inserisci tre numeri interi: ");
+        int a = input.nextInt();
+        int b = input.nextInt();
+        int c = input.nextInt();
+
+        input.close();
+
+        // Creazione di un'istanza della classe OrdinaNumeri
+        OrdinaNumeri prova = new OrdinaNumeri();
+        // Chiamata al metodo ordinaETiStampa
+        int[] ordinati = prova.ordinaETiStampa(a, b, c);
+
+        // Stampa dei numeri ordinati
+        System.out.println("Numeri in ordine crescente: " + ordinati[0] + ", " + ordinati[1] + ", " + ordinati[2]);
+    }
+}

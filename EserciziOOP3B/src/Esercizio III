@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+class Verificazione {
+    public boolean verifica(int min, int max, int valore) {
+        return valore >= min && valore <= max;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Verificazione prova = new Verificazione();
+        Scanner input = new Scanner(System.in);
+        System.out.println("Inserisci tre numeri interi: ");
+        int min = input.nextInt();
+        int max = input.nextInt();
+        int valore = input.nextInt();
+        input.close();
+        boolean fatto = prova.verifica(min, max, valore);
+        System.out.println("La terza cifra è compresa fra le due precedenti? " + fatto);
+
+    }
+}

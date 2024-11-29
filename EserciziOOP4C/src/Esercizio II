@@ -1,0 +1,75 @@
+import java.util.Scanner;
+
+//Realizzare una classe "Moneta" che rappresenti una moneta che abbia un nome e un certo valore
+public class Moneta {
+    private String valuta; /*Riferiamoci soltanto all'euro*/
+    private double valore;
+
+    //Realizzare la classe "RegistratoreDiCassa"
+    private class RegistratoreDiCassa {
+        private int moneteMassime;
+        private int moneteMinime;
+        private int moneteTotali;
+        private double sommaValori;
+        private double valoreMassimo;
+        private double valoreMinimo;
+
+        //Costruttore per inizializzare il registratore di cassa
+        public RegistratoreDiCassa() {
+            this.moneteMassime = 100;
+            this.moneteMinime = 0;
+            this.moneteTotali = 0;
+            this.sommaValori = 0;
+            this.valoreMassimo = 2;
+            this.valoreMinimo = 0.01;
+
+        }
+
+        //Metodi per inserire e rimuovere le monete dal registratore di casa
+        public void inserireMoneta(double valore) {
+            while (moneteTotali <= moneteMassime) {
+                if (valore <= valoreMassimo && valore >= valoreMinimo) {
+                    moneteTotali++;
+                    sommaValori += valore;
+                }
+            }
+        }
+        public void rimuovereMoneta(double valore) {
+            while (moneteTotali >= moneteMinime) {
+                if (valore <= valoreMassimo && valore >= valoreMinimo) {
+                    moneteTotali--;
+                    sommaValori -= valore;
+                }
+            }
+        }
+
+    }
+
+    //Costruttore per inizializzare la moneta
+    public Moneta() {
+        this.valuta = "euro";
+        this.valore = 0;
+
+    }
+
+    //Proviamo
+    public static void main(String[] args) {
+        Moneta moneta = new Moneta();
+        Scanner input = new Scanner(System.in);
+
+        //Per farlo continuare all'infinito finchè non fermo tutto
+        while (true) {
+            System.out.println("Si vuole inserire o rimuovere una moneta?");
+            String decisione = input.nextLine();
+
+            if (decisione.equalsIgnoreCase("inserire")) {
+                System.out.print("Inserire una moneta specificando il suo valore e la sua valuta: ");
+                double valore = input.nextDouble();
+                String valuta = input.nextLine();
+                moneta.inserireMoneta(valore);
+            }
+
+
+        }
+    }
+}

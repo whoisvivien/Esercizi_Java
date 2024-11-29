@@ -1,0 +1,80 @@
+//PRIMO METODO: UTILIZZO DUE FILE-CLASSE DIFFERENTI NELLO STESSO PROGETTO
+
+//PRIMO FILE
+
+// SI DEFINISCE UNA CLASSE
+public class Comparatore {
+
+    // SI DEFINISCE IL METODO
+    public int confronta(int a, int b) {
+
+        //CON LE SUE CONDIZIONI
+        if (a > b) {
+            return a - b;
+        }
+        else {
+            return b - a;
+        }
+    }
+}
+
+//SECONDO FILE
+
+import java.util.Scanner;
+
+// CREAZIONE DELLA CLASSE PER TESTARE IL METODO confronta DELL'ALTRA CLASSE
+public class TestComparatore {
+
+    // CREAZIONE DEL METODO main
+    public static void main(String[] args) {
+
+        // CREAZIONE DI UN'ISTANZA DELLA CLASSE COMPARATORE
+        Comparatore comparatore = new Comparatore();
+
+        System.out.print("Digita due cifre: ");
+        Scanner input = new Scanner(System.in);
+        int a = input.nextInt();
+        int b = input.nextInt();
+        int risultato = comparatore.confronta(a, b);
+
+        System.out.println("Dal confronto fra " + a + " e " + b + " ottengo " + risultato);
+    }
+}
+
+
+
+
+//SECONDO METODO: METTO TUTTO IN UN FILE-CLASSE
+
+import java.util.Scanner;
+
+// CREAZIONE UNICA CLASSE PUBBLICA
+public class Comparatore {
+
+    //CREAZIONE METODO
+    public int confronta(int a, int b) {
+        if (a > b) {
+            return a - b;
+        }
+        else {
+            return b - a;
+        }
+    }
+}
+
+// CREAZIONE CLASSE NON PUBBLICA
+class TestComparatore {
+    // CREAZIONE METODO
+    public static void main(String[] args) {
+        // CREAZIONE DI UN'ISTANZA DELLA CLASSE Comparatore
+        Comparatore comparatore = new Comparatore();
+
+        // TEST
+        Scanner input = new Scanner(System.in);
+        System.out.print("Inserisci due cifre: ");
+        int a = input.nextInt();
+        int b = input.nextInt();
+        int risultato = comparatore.confronta(a, b);
+        System.out.println("Dal confronto fra " + a + " e " + b + " ottengo " + risultato);
+    }
+}

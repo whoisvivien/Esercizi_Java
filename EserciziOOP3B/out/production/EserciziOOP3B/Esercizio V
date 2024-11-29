@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class NumeroUtil {
+
+    // Metodo che verifica se un numero è primo
+    public static boolean primo(int numero) {
+        // i numeri minori o uguali a 1 non sono primi
+        if (numero <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(numero); i++) {
+            if (numero % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // Metodo che trova il minimo divisore (escluso 1) di un numero
+    public static int divisore(int numero) {
+        if (numero <= 1) {
+            return -1; // Non esiste un divisore valido
+        }
+        for (int i = 2; i <= numero; i++) {
+            if (numero % i == 0) {
+                return i;
+            }
+        }
+        return -1; // Questo non dovrebbe mai essere raggiunto
+    }
+
+    // Metodo main per testare gli altri metodi
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Inserisci un numero intero: ");
+        int numero = input.nextInt();
+        input.close();
+
+        // Test del metodo primo
+        boolean isPrimo = primo(numero);
+        System.out.println("Il numero " + numero + " è primo? " + isPrimo);
+
+        // Test del metodo divisore
+        int minDivisore = divisore(numero);
+        if (minDivisore != -1) {
+            System.out.println("Il minimo divisore di " + numero + " (escluso 1) è: " + minDivisore);
+        } else {
+            System.out.println("Non esiste un divisore valido per " + numero);
+        }
+    }
+}
